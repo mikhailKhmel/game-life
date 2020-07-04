@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game Life</title>
+    <link href="index.css" rel="stylesheet">
+    <link href="favicon.png" rel="shortcut icon" type="image/x-icon"/>
+</head>
+<body onload="drawGrid()">
+<div>
+    <table id="gameGrid">
+
+    </table>
+</div>
+<br>
+<table>
+    <tr>
+        <td><input id="generateCells" onclick="generateCells()" type="button" value="Generate Random Cells"></td>
+        <td><input id="oneStep" onclick="oneStep()" type="button" value="One Step"></td>
+        <td><input id="cleanGrid" onclick="cleanGrid()" type="button" value="Clean"></td>
+    </tr>
+    <tr>
+        <td><input id="delayValue" type="text" value="100"></td>
+        <td><input id="runSteps" onclick="setFlag(true)" type="button" value="Run"></td>
+        <td><input id="stopSteps" onclick="setFlag(false)" type="button" value="Stop"></td>
+    </tr>
+    <tr>
+        <td><input id="applyDelay" onclick="setDelay()" type="button" value="Apply"></td>
+    </tr>
+</table>
+<script src="game.js"></script>
+</body>
+</html>
