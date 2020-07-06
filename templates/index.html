@@ -3,48 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <title>Game Life</title>
-    <link href="index.css" rel="stylesheet">
+    <style>
+        table {
+            margin: 1px auto;
+            border-collapse: collapse;
+        }
+
+        table#login {
+            border: 1px solid;
+            margin: 1px auto;
+            border-collapse: collapse;
+        }
+
+        table#gameGrid {
+            border: 1px solid;
+            margin: 1px auto;
+            border-collapse: collapse;
+        }
+
+        td#gameGrid {
+            border: 1px solid;
+            border-spacing: 1px;
+        }
+
+        input {
+            margin: auto;
+            width: 200px;
+        }
+
+    </style>
     <link href="favicon.png" rel="shortcut icon" type="image/x-icon"/>
 </head>
 <body onload="drawGrid()">
-<div>
-    <table id="gameGrid">
-
-    </table>
-</div>
-<br>
 <table>
     <tr>
-        <td><input id="generateCells" onclick="makeRequestAndUpdate('get_gen_cells')" type="button"
-                   value="Generate Random Cells"></td>
-        <td><input id="oneStep" onclick="makeRequestAndUpdate('one_step')" type="button" value="One Step"></td>
-        <td><input id="cleanGrid" onclick="makeRequestAndUpdate('clear')" type="button" value="Clean"></td>
+        <td><h1>GAME LIFE</h1></td>
+        <td></td>
     </tr>
     <tr>
-        <td><input id="delayValue" type="text" value="100"></td>
-        <td><input id="runSteps" onclick="setFlag(true)" type="button" value="Run"></td>
-        <td><input id="stopSteps" onclick="setFlag(false)" type="button" value="Stop"></td>
+        <td>
+            <form>
+                <table id="login">
+                    <tr>
+                        <td>
+                            <p>USERNAME</p>
+                            <input type="text" value="Login">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>PASSWORD</p>
+                            <input type="password">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="button" value="LOGIN">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="button" value="REGISTRATION">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </td>
+        <td>
+            <div>
+                <table id="gameGrid">
+                </table>
+            </div>
+        </td>
     </tr>
     <tr>
-        <td><input id="applyDelay" onclick="setDelay()" type="button" value="Apply"></td>
+        <td></td>
+        <td>
+            <table>
+                <tr>
+                    <td><input id="generateCells" onclick="makeRequestAndUpdate('get_gen_cells')" type="button"
+                               value="Generate Random Cells"></td>
+                    <td><input id="oneStep" onclick="makeRequestAndUpdate('one_step')" type="button" value="One Step">
+                    </td>
+                    <td><input id="cleanGrid" onclick="makeRequestAndUpdate('clear')" type="button" value="Clean"></td>
+                </tr>
+                <tr>
+                    <td><input id="runSteps" onclick="setFlag(true)" type="button" value="Run"></td>
+                    <td><input id="stopSteps" onclick="setFlag(false)" type="button" value="Stop"></td>
+                </tr>
+            </table>
+        </td>
     </tr>
 </table>
+
+
 <script>
     let wightTable = heightTable = 80;
     let wightHeightCell = "5px";
     let flagRun = true;
-    let delayValue = 100;
+    let delayValue = 500;
     const url = '';
     clearCells();
 
     function setFlag(f) {
         flagRun = f;
         if (flagRun) runSteps();
-    }
-
-    function setDelay() {
-        let v = document.getElementById("delayValue").value;
-        delayValue = parseInt(v);
     }
 
     async function sleep(delayValue) {
@@ -81,6 +144,7 @@
     }
 
     async function makeRequestAndUpdate(type) {
+        if (type === 'clear') flagRun = false;
         let response = await fetch(url, {
             method: 'POST',
             headers: {
