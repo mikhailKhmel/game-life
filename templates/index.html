@@ -9,12 +9,6 @@
             border-collapse: collapse;
         }
 
-        table#login {
-            border: 1px solid;
-            margin: 1px auto;
-            border-collapse: collapse;
-        }
-
         table#gameGrid {
             border: 1px solid;
             margin: 1px auto;
@@ -42,34 +36,6 @@
     </tr>
     <tr>
         <td>
-            <form>
-                <table id="login">
-                    <tr>
-                        <td>
-                            <p>USERNAME</p>
-                            <input type="text" value="Login">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <p>PASSWORD</p>
-                            <input type="password">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="button" value="LOGIN">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="button" value="REGISTRATION">
-                        </td>
-                    </tr>
-                </table>
-            </form>
-        </td>
-        <td>
             <div>
                 <table id="gameGrid">
                 </table>
@@ -77,7 +43,6 @@
         </td>
     </tr>
     <tr>
-        <td></td>
         <td>
             <table>
                 <tr>
@@ -101,7 +66,7 @@
     let wightTable = heightTable = 80;
     let wightHeightCell = "5px";
     let flagRun = true;
-    let delayValue = 1000;
+    let delayValue = 500;
     const url = '';
     clearCells();
 
