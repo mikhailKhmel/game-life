@@ -19,7 +19,7 @@ def hello_world():
         dump = cells.dump()
         return {'result': dump}
     else:
-        return flask.render_template("index.html")
+        return flask.render_template("index.html", url='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
 
 
 if __name__ == '__main__':
